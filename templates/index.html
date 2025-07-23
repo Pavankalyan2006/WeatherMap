@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-Aware Navigation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader-overlay"><div class="loader-spinner"></div></div>
+
+    <aside id="sidebar">
+        <header class="sidebar-header">
+            <h1>WeatherNav</h1>
+            <p>Your intelligent driving companion</p>
+        </header>
+
+        <section class="route-planner">
+            <div class="input-group">
+                <label for="start">Start</label>
+                <input type="text" id="start" placeholder="Enter starting location">
+            </div>
+
+            <div id="waypoints-container"></div>
+
+            <div class="input-group">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" placeholder="Enter destination">
+            </div>
+
+          
+            <button id="add-waypoint-btn" class="secondary-btn">+ Add Stop</button>
+            
+            <button id="get-route-btn">Get Route & Weather</button>
+        </section>
+
+        <section id="trip-controls" class="hidden">
+            <div class="toggle-group">
+                <label for="weather-toggle">Show Weather Icons</label>
+                <input type="checkbox" id="weather-toggle" checked>
+            </div>
+            <button id="start-nav-btn">Start Navigation</button>
+        </section>
+
+        <section id="info-panels">
+            <div id="live-navigation-step" class="info-card"></div>
+            <div id="route-summary" class="info-card"></div>
+            <div id="weather-details" class="info-card"></div>
+            <div id="navigation-instructions" class="info-card"></div>
+        </section>
+    </aside>
+
+    <main id="map"></main>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_key }}&loading=async&libraries=places,marker,geometry&callback=initMap" defer></script>
+</body>
+</html>

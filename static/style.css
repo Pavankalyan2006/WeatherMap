@@ -1,0 +1,48 @@
+:root {
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --secondary-color: #95a5a6;
+    --secondary-hover: #7f8c8d;
+    --bg-color: #f4f6f8;
+    --sidebar-bg: #2c3e50;
+    --sidebar-text: #ecf0f1;
+    --card-bg: #34495e;
+    --border-color: #4a627a;
+    --highlight-bg: #3498db;
+    --highlight-text: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body { margin: 0; font-family: 'Roboto', sans-serif; display: flex; height: 100vh; overflow: hidden; background-color: var(--bg-color); }
+#sidebar { width: 380px; background-color: var(--sidebar-bg); color: var(--sidebar-text); padding: 25px; box-shadow: var(--shadow); z-index: 10; display: flex; flex-direction: column; overflow-y: auto; }
+.sidebar-header { text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 25px; }
+.sidebar-header h1 { margin: 0; color: var(--primary-color); font-weight: 700; }
+.sidebar-header p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.8; }
+.input-group { margin-bottom: 15px; position: relative; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9em; }
+.input-group input { width: 100%; padding: 12px; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 5px; color: var(--sidebar-text); box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; }
+.input-group input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25); }
+button { width: 100%; padding: 12px; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.3s, transform 0.2s; margin-top: 10px; }
+button:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+/* ---> NEW: Styles for secondary button and waypoints <--- */
+.secondary-btn { background-color: var(--secondary-color); margin-top: 0; margin-bottom: 20px; }
+.secondary-btn:hover { background-color: var(--secondary-hover); }
+.remove-waypoint-btn { position: absolute; right: 10px; top: 35px; background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 1.5em; padding: 0; margin: 0; width: auto; }
+#trip-controls.hidden { display: none; }
+.toggle-group { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 10px; background-color: var(--card-bg); border-radius: 5px; }
+.info-card { background-color: var(--card-bg); padding: 15px; border-radius: 5px; margin-top: 15px; }
+.info-card h3 { margin-top: 0; color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 10px; }
+#map { flex-grow: 1; height: 100vh; }
+#live-navigation-step { display: none; background-color: var(--primary-color); color: var(--highlight-text); border: 2px solid var(--primary-hover); }
+#live-navigation-step h3 { color: var(--highlight-text); border-bottom-color: rgba(255, 255, 255, 0.5); }
+#directions-list li { padding: 8px 5px; border-radius: 4px; margin-bottom: 5px; transition: background-color 0.3s; }
+.active-step { background-color: var(--highlight-bg); color: var(--highlight-text); font-weight: 500; }
+.step-distance { font-size: 0.9em; opacity: 0.8; }
+#loader-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+#loader-overlay.active { opacity: 1; visibility: visible; }
+.loader-spinner { border: 5px solid #f3f3f3; border-top: 5px solid var(--primary-color); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(3); opacity: 0; } }
+.gps-marker { width: 20px; height: 20px; border-radius: 50%; background: #4285F4; border: 2px solid white; box-shadow: var(--shadow); position: relative; }
+.gps-marker::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: #4285F4; animation: pulse 1.5s infinite; }
+.weather-icon { width: 50px; height: 50px; cursor: pointer; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
